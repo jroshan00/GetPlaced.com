@@ -37,4 +37,15 @@
   </servlet-mapping>
   
   
+  <!-- bellow configuration is for StudentDeleteController  -->
+   <servlet>
+  		<servlet-name>delete</servlet-name>
+  		<servlet-class>com.infosys.servlet_simple_demo.controller.StudentDeleteController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>delete</servlet-name>
+  		<url-pattern>/deleteStudent</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

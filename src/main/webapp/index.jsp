@@ -7,30 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GetPlaced.com</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        animation: {
-          fade: 'fadeIn 1s ease-in-out',
-        },
-        keyframes: {
-          fadeIn: {
-            '0%': { opacity: 0 },
-            '100%': { opacity: 1 },
-          }
-        }
-      }
-    }
-  }
-</script>
-<!-- AOS for animations -->
-<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
 </head>
 <body class="bg-gray-100 font-sans leading-relaxed text-gray-800">
 
