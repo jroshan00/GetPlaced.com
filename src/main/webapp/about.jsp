@@ -52,7 +52,7 @@
     </div>
   </section>
 
-  <footer class="bg-gray-800 text-white text-sm text-center py-4 mt-10">
+  <footer class="bg-gray-800 text-white text-sm text-center py-4 mt-20">
     © 2025 GetPlaced.com — Built for student success.
   </footer>
 

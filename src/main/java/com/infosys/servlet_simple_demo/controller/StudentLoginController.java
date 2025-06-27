@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class StudentLoginController extends HttpServlet {
 
@@ -22,6 +23,9 @@ public class StudentLoginController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session= req.getSession();
+		String mail=req.getParameter("email");
+		session.setAttribute("studentEmail",mail);
 		StudentEntity studentEntity=new StudentEntity();
 		studentEntity.setEmail(req.getParameter("email"));
 		studentEntity.setPassword(req.getParameter("password"));
@@ -40,6 +44,7 @@ public class StudentLoginController extends HttpServlet {
 				System.out.println(requestDispenser.toString());
 				requestDispenser.include(req, resp);
 				System.out.println("Invalid Credential !!");
+				System.out.println("Login Failed");
 			}
 		} catch(SQLException e) {
 			printWriter.write("Something Went Wrong !!");

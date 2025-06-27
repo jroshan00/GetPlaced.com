@@ -63,6 +63,35 @@ public class StudentDao {
 
 		}
 	}
+	
+	public static StudentEntity getStudentDetailsByEmailDao(String email) {
+		if (connection == null) {
+			return null;
+		}
+		final String GET_BY_ID_QUERY = "SELECT * FROM STUDENT WHERE email=?";
+		try {
+			StudentEntity studentEntity = new StudentEntity();
+			PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_ID_QUERY);
+			email=email.toLowerCase();
+			preparedStatement.setString(1, email);
+			ResultSet set = preparedStatement.executeQuery();
+			while (set.next()) {
+				studentEntity.setId(set.getInt("id"));
+				studentEntity.setName(set.getString("name"));
+				studentEntity.setEmail(email);
+				studentEntity.setPassword(set.getString("password"));
+				studentEntity.setPhone(set.getLong("phone"));
+				studentEntity.setDate(set.getDate("dob").toLocalDate());
+				studentEntity.setGender(set.getString("gender"));
+			}
+			return studentEntity;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+
+		}
+	}
 
 	public static void setStudentMessageDao(StudentMessage studentMessage) {
 
@@ -157,7 +186,7 @@ public class StudentDao {
 	 * Not in service
 	 */
 	public static boolean updateStudentDataDao(int id, StudentEntity studentEntity) {
-		final String updateQuery = "UPDATE STUDENT SET name=?,email=?,phone=?,dob=?,gender=? where id=?";
+		final String updateQuery = "UPDATE STUDENT SET name=?,email=?,phone=?,dob=?,gender=?,password=? where id=?";
 
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);) {
 			preparedStatement.setString(1, studentEntity.getName());
@@ -165,7 +194,8 @@ public class StudentDao {
 			preparedStatement.setLong(3, studentEntity.getPhone());
 			preparedStatement.setObject(4, studentEntity.getDate());
 			preparedStatement.setString(5, studentEntity.getGender());
-			preparedStatement.setInt(6, id);
+			preparedStatement.setString(6, studentEntity.getPassword());
+			preparedStatement.setInt(7, id);
 			int x = preparedStatement.executeUpdate();
 			if (x > 0) {
 				return true;

@@ -26,7 +26,11 @@
 			</nav>
 		</div>
 	</header>
-
+	<div class="mt-6 text-center">
+			<a href="student-details"
+				class="inline-block bg-green-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-green-700 transition">
+				View My Details </a>
+	</div>
 	<!-- Hero Section -->
 	<section class="bg-blue-50 py-16">
 		<div class="max-w-6xl mx-auto px-4 text-center">
