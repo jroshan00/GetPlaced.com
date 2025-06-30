@@ -1,3 +1,4 @@
+<%@page import="jakarta.servlet.http.HttpSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,6 +26,10 @@
 		      </nav>
     	</div>
   	</header>
+  	<%
+  		HttpSession httpsession=request.getSession();
+  		if(httpsession!=null){
+  	%>
     <div class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-2xl shadow-xl">
         <form action="loginStudent" method="post" class="space-y-5">
             <h1 class="text-2xl font-bold text-center text-gray-700 mb-4">Student Login</h1>
@@ -47,6 +52,7 @@
                 </button>
             </div>
         </form>
+        <%} %>
         <p class="text-sm text-gray-500 text-center mt-4">Don't have an account? <a href="register.jsp" class="text-blue-600 hover:underline">Register</a></p>
     </div>
  	<footer class="bg-gray-800 text-white text-sm text-center py-4 mt-10">

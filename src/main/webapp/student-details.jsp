@@ -26,9 +26,10 @@
 			<nav class="space-x-6 text-sm font-medium">
 				<a href="index.jsp" class="text-gray-700 hover:text-blue-600">Home</a>
 				<a href="register.jsp" class="text-gray-700 hover:text-blue-600">Register</a>
-				<a href="login.jsp" class="hover:text-blue-600">Login</a> <a
-					href="about.jsp" class="text-gray-700 hover:text-blue-600">About</a>
+				<a href="login.jsp" class="hover:text-blue-600">Login</a> 
+				<a href="about.jsp" class="text-gray-700 hover:text-blue-600">About</a>
 				<a href="contact.jsp" class="text-gray-700 hover:text-blue-600">Contact</a>
+				<a href="logout.jsp" class="text-gray-700 hover:text-blue-600">Logout</a>
 			</nav>
 		</div>
 	</header>

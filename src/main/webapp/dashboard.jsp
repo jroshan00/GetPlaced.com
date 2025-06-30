@@ -1,3 +1,4 @@
+<%@page import="jakarta.servlet.http.HttpSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html lang="en">
@@ -23,9 +24,18 @@
 				<a href="login.jsp" class="hover:text-blue-600">Login</a>
 				<a href="about.jsp" class="text-gray-700 hover:text-blue-600">About</a>
 				<a href="contact.jsp" class="text-gray-700 hover:text-blue-600">Contact</a>
+				<a href="logout.jsp" class="text-gray-700 hover:text-blue-600">Logout</a>
+				
 			</nav>
 		</div>
 	</header>
+	<%
+	HttpSession httpsession = request.getSession(false); // avoid creating a session
+	if (httpsession == null || httpsession.getAttribute("studentEmail") == null) {
+	    response.sendRedirect("login.jsp");
+	    return;
+	}else{
+	%>
 	<div class="mt-6 text-center">
 			<a href="student-details"
 				class="inline-block bg-green-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-green-700 transition">
@@ -74,7 +84,7 @@
 			</div>
 		</div>
 	</section>
-
+	<%}%>
 	<!-- Footer -->
 	<footer class="bg-gray-800 text-white py-6 mt-10">
 		<div class="max-w-6xl mx-auto px-4 text-center text-sm">© 2025

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import com.infosys.servlet_simple_demo.dao.StudentDao;
 import com.infosys.servlet_simple_demo.entity.StudentEntity;
 import com.infosys.servlet_simple_demo.services.StudentServices;
 
@@ -23,20 +24,25 @@ public class StudentLoginController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session= req.getSession();
-		String mail=req.getParameter("email");
-		session.setAttribute("studentEmail",mail);
-		StudentEntity studentEntity=new StudentEntity();
-		studentEntity.setEmail(req.getParameter("email"));
-		studentEntity.setPassword(req.getParameter("password"));
 		resp.setContentType("text/html");
 		PrintWriter printWriter=resp.getWriter();
 		RequestDispatcher requestDispenser;
+		String mail=req.getParameter("email");
+		HttpSession session= req.getSession();
+		StudentEntity studentEntity=new StudentEntity();
+		studentEntity.setEmail(req.getParameter("email"));
+		studentEntity.setPassword(req.getParameter("password"));
 		try {
-			if(StudentServices.isStudentCredentialValidationService(studentEntity)) {
-				requestDispenser=req.getRequestDispatcher("dashboard.jsp");
-				requestDispenser.include(req, resp);
+			if(StudentServices.isStudentCredentialValidationService(studentEntity) && session !=null) {
+				session.setAttribute("studentEmail",mail);
+				session.setMaxInactiveInterval(10);
+				resp.sendRedirect("dashboard.jsp");
+//				String[] str=StudentDao.getStudentDetailsByEmailDao(mail).getName().trim().split("\s+");
+//				printWriter.write("Welcome Dear "+str[0]+"!");
+//				requestDispenser=req.getRequestDispatcher("dashboard.jsp");
+//				requestDispenser.include(req, resp);
 				System.out.println("Login Success");
+				return;
 			}
 			else {
 				printWriter.write("Invalid Credential !!");

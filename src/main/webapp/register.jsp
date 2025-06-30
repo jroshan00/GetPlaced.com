@@ -27,7 +27,7 @@
   	</header>
     <div class="max-w-xl mx-auto mt-10 p-8 bg-white rounded-2xl shadow-xl">
         <h2 class="text-red-600 text-lg font-bold mb-4">
-            Note: This registration form is for fresher candidates only
+            Note: This registration form is for fresh candidates only
         </h2>
 
         <form action="registerStudent" method="post" class="space-y-5">
